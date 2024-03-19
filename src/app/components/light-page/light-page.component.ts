@@ -1,21 +1,31 @@
 import { Component } from '@angular/core';
-import {NgClass} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-light-page',
   standalone: true,
   imports: [
-    NgClass
+    NgClass,
+    NgForOf
   ],
   templateUrl: './light-page.component.html',
   styleUrl: './light-page.component.css'
 })
 export class LightPageComponent {
 
-  light: boolean = false;
+  lightArray: any[] = [{
+    toggled: false,
+    title: "Lampe 1"
+  },{
+    toggled: false,
+    title: "Lampe 2"
+  },{
+    toggled: false,
+    title: "Lampe 3"
+  }];
 
-  switchLight() {
-    this.light = !this.light;
+  switchLight(lightObject: any) {
+    lightObject.toggled = !lightObject.toggled;
   }
 
 }

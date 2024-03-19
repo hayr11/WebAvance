@@ -1,4 +1,9 @@
 <div class="flex gap-3">
-  <div class="w-40 h-40" (click)="switchLight()"
-       [ngClass]="light ? 'bg-yellow-500' : 'bg-black'"></div>
+  <div *ngFor="let light of lightArray" class="flex flex-col items-center justify-center gap-3">
+    <div class="w-40 h-40 flex justify-center items-center" (click)="switchLight(light)"
+         [ngClass]="light.toggled ? 'bg-yellow-500' : 'bg-black'">
+      <div class="text-white">{{ light.toggled ? "On" : "Off" }}</div>
+    </div>
+    <div>{{ light.title }}</div>
+  </div>
 </div>
