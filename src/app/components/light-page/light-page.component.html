@@ -1,4 +1,4 @@
 <div class="flex gap-3">
-  <div class="w-40 h-40 bg-black"></div>
-  <div class="w-40 h-40 bg-yellow-500"></div>
+  <div class="w-40 h-40" (click)="switchLight()"
+       [ngClass]="light ? 'bg-yellow-500' : 'bg-black'"></div>
 </div>
