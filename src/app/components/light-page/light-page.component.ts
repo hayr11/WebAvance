@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import {NgClass, NgForOf} from "@angular/common";
+import {LightComponent} from "../light/light.component";
 
 @Component({
   selector: 'app-light-page',
   standalone: true,
   imports: [
     NgClass,
-    NgForOf
+    NgForOf,
+    LightComponent
   ],
   templateUrl: './light-page.component.html',
   styleUrl: './light-page.component.css'
@@ -24,8 +26,6 @@ export class LightPageComponent {
     title: "Lampe 3"
   }];
 
-  switchLight(lightObject: any) {
-    lightObject.toggled = !lightObject.toggled;
-  }
+
 
 }
