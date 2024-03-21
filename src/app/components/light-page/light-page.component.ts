@@ -19,7 +19,8 @@ import {FormsModule} from "@angular/forms";
 export class LightPageComponent {
 
   light: any = {
-    name: ""
+    name: "",
+    color: ""
   }
 
 

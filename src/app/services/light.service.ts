@@ -8,15 +8,18 @@ export class LightService {
   private lightArray: any[] = [{
     id: 1,
     toggled: false,
-    title: "Lampe 1"
+    title: "Lampe 1",
+    color: "#123456"
   }, {
     id: 2,
     toggled: false,
-    title: "Lampe 2"
+    title: "Lampe 2",
+    color: "#123416"
   }, {
     id: 3,
     toggled: false,
-    title: "Lampe 3"
+    title: "Lampe 3",
+    color: "#FF3456"
   }];
 
   private nextId: number = 4;
@@ -28,11 +31,12 @@ export class LightService {
     return this.lightArray;
   }
 
-  addLight(name: string) {
+  addLight(lightSent: any) {
     let light = {
       id: this.nextId,
       toggled: false,
-      title: name
+      title: lightSent.name,
+      color: lightSent.color
     };
     this.lightArray.push(light);
     this.nextId++;
