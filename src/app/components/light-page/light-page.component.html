@@ -1,5 +1,10 @@
-<div class="flex gap-3">
-  <div *ngFor="let light of lightArray">
-    <app-light [light]="light"></app-light>
+<div class="flex flex-col gap-3">
+  <div>
+    <button class="bg-green-900 text-white rounded shadow p-3" (click)="lightService.addLight()">Ajouter</button>
+  </div>
+  <div class="flex gap-3">
+    <div *ngFor="let light of lightService.getAllLight()">
+      <app-light [light]="light" (trigger)="handleTrigger(light.id)"></app-light>
+    </div>
   </div>
 </div>
