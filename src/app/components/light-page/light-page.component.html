@@ -1,10 +1,17 @@
 <div class="flex flex-col gap-3">
-  <div>
-    <button class="bg-green-900 text-white rounded shadow p-3" (click)="lightService.addLight()">Ajouter</button>
+  <div class="m-3 border rounded p-3 flex flex-col gap-3">
+    <div class="italic">Control Panel</div>
+    <div>
+      <input class="border py-3 px-1.5" placeholder="Light Name ..."/>
+      <button class="bg-blue-600 text-white rounded shadow p-3" (click)="lightService.addLight()">Ajouter</button>
+    </div>
   </div>
-  <div class="flex gap-3">
-    <div *ngFor="let light of lightService.getAllLight()">
-      <app-light [light]="light" (trigger)="handleTrigger(light.id)"></app-light>
+  <div class="flex flex-col gap-3 border m-3 p-3 rounded">
+    <div class="italic pb-3">Light Panel</div>
+    <div class="flex gap-3">
+      <div *ngFor="let light of lightService.getAllLight()">
+        <app-light [light]="light" (trigger)="handleTrigger(light.id)"></app-light>
+      </div>
     </div>
   </div>
 </div>
