@@ -28,11 +28,11 @@ export class LightService {
     return this.lightArray;
   }
 
-  addLight() {
+  addLight(name: string) {
     let light = {
       id: this.nextId,
       toggled: false,
-      title: "New Lamp"
+      title: name
     };
     this.lightArray.push(light);
     this.nextId++;
