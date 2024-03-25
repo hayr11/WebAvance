@@ -29,4 +29,9 @@ export class LightPageComponent {
   handleTrigger(id: number) {
     this.lightService.removeLight(id);
   }
+
+  switchLight(light: any) {
+    console.log("switching : " + light);
+    this.lightService.toggleLight(light);
+  }
 }

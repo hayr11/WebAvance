@@ -37,4 +37,11 @@ export class LightService {
   removeLight(id: number) {
     this.lightArray = this.lightArray.filter(light => light.id != id);
   }
+
+  toggleLight(light: any) {
+    light.toggled = !light.toggled;
+    this.httpClient.post("/api/lights", light).subscribe((lightReceived: any) => {
+      light = lightReceived;
+    });
+  }
 }

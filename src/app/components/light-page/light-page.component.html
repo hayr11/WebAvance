@@ -11,7 +11,7 @@
     <div class="italic pb-3">Light Panel</div>
     <div class="flex gap-3">
       <div *ngFor="let light of lightService.getAllLight()">
-        <app-light [light]="light" (trigger)="handleTrigger(light.id)"></app-light>
+        <app-light [light]="light" (trigger)="handleTrigger(light.id)" (toggled)="switchLight(light)"></app-light>
       </div>
     </div>
   </div>
