@@ -1,30 +1,21 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LightService {
 
-  private lightArray: any[] = [{
-    id: 1,
-    toggled: false,
-    title: "Lampe 1",
-    color: "#123456"
-  }, {
-    id: 2,
-    toggled: false,
-    title: "Lampe 2",
-    color: "#123416"
-  }, {
-    id: 3,
-    toggled: false,
-    title: "Lampe 3",
-    color: "#FF3456"
-  }];
+  private lightArray: any[] = [];
 
-  private nextId: number = 4;
+  constructor(private httpClient: HttpClient) {
+    this.refreshLights();
+  }
 
-  constructor() {
+  refreshLights() {
+    this.httpClient.get("/api/lights").subscribe((lights: any) => {
+      this.lightArray = lights;
+    });
   }
 
   getAllLight() {
@@ -33,13 +24,14 @@ export class LightService {
 
   addLight(lightSent: any) {
     let light = {
-      id: this.nextId,
       toggled: false,
       title: lightSent.name,
       color: lightSent.color
     };
-    this.lightArray.push(light);
-    this.nextId++;
+
+    this.httpClient.post("/api/lights", light).subscribe(() => {
+      this.refreshLights();
+    })
   }
 
   removeLight(id: number) {
