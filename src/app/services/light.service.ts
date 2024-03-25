@@ -35,7 +35,9 @@ export class LightService {
   }
 
   removeLight(id: number) {
-    this.lightArray = this.lightArray.filter(light => light.id != id);
+    this.httpClient.delete("/api/lights/" + id).subscribe(() => {
+      this.refreshLights();
+    })
   }
 
   toggleLight(light: any) {
